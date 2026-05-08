@@ -1,0 +1,102 @@
+# Playwright Demo Project
+
+This project is a small example to learn how to write automated end-to-end tests with [Playwright](https://playwright.dev/).
+
+## Prerequisites
+
+- Node.js (recommended: LTS version)
+- npm (comes with Node.js)
+- Access to the internal application you want to test
+
+## Setup
+
+1. Create and open a new folder in your IDE or terminal.
+2. Initialize Playwright:
+   ```bash
+   npm init playwright@latest
+3.  Answer the questions in the wizard, e.g.
+    Language: JavaScript
+    Tests folder: tests
+    Add GitHub Actions workflow: as you like
+
+
+First Test
+Create a file XXXYTest.spec.js in the tests folder:
+
+// tests/XXXYTest.spec.js
+const { test, expect } = require('@playwright/test');
+
+test('First Playwright test', async ({ page }) => {
+  // Step 1 – open the application
+  await page.goto('https://your-internal-app.example');
+
+  // Step 2 – enter username/password
+  await page.fill('#username', 'my-username');
+  await page.fill('#password', 'my-password');
+  await page.click('button[type="submit"]');
+
+  // Step 3 – simple verification
+  await expect(page).toHaveURL(/dashboard/);
+});
+
+
+
+
+# Running the Tests
+
+1. Run all tests:
+npx playwright test
+
+2. Run tests in headed mode (see the browser):
+npx playwright test --headed
+
+# Important: async / await
+Playwright commands are asynchronous.
+Use await before each Playwright action to make sure the steps run in sequence:
+
+await page.goto(...);
+await page.fill(...);
+await page.click(...);
+
+3. Run only tagged tests, with tag @Web:
+npx playwright test --grep @Web
+
+test(` @Web ClientApp Buy And Checkout E2E for ${data.productName}`, async ({page})=>
+   {
+
+4. ${data.productName}` - will take the parameter from the JSON data source
+
+5. See playwrigth.config1.js for different running configurations 
+6. Test files run per default in parallel and the tests into one test file run in sequential, but when one test fails it goes on executing the next one.
+7. When you add before the test : 
+test.describe.configure({mode:'serial'}); //this should skipp the following tests, when a test fails
+test.describe.configure({mode:'parallel'}); // this should run all tests from this test file in parallel.
+8. Reporting:You can configure "reporter : 'html'" into the playwright.config.js and then copy the path of the html report from your project and paste it in the browser - so you open the last execution report.
+9. Custom reporting Plugin - allure - install with the command: npm install -D allure-playwright  
+   Then run test cases
+   This is the command:
+   npx playwright test --grep @Web --reporter=line,allure-playwright
+
+   From the folder allure-results - generate the report:
+   allure generate ./allure-results --clean
+
+   Open the report: allure open
+
+   If these commands are not working - allure not found, then install it in the commandline:
+   npm install -D allure-commandline  
+   and then run
+   ./allure-results --clean
+   npx allure open
+
+10. In package.json you can save different scripts for running the tests. For example
+
+"scripts": {
+    "test": "npx playwright test tests/NetworkTest.spec.js --headed",
+    "webTest": "npx playwright test --grep @Web",
+    "apiTest": "npx playwright test --grep @API",
+    "safariConfig1": "npx playwright test --config playwright.config1.js --project=safari"
+  }, 
+
+
+In the command promt you have to run this command for example:
+npm run webTest

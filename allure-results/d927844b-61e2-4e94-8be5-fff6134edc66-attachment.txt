@@ -1,0 +1,4 @@
+3
+Promise { [ 'ADIDAS ORIGINAL', 'ZARA COAT 3', 'iphone 13 pro' ] }
+[ ' Switzerland' ]
+ | 69f9be89f86ba51a65a32ba6 | 
