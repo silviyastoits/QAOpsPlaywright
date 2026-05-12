@@ -1,0 +1,24 @@
+# First get the storage account resource ID
+az storage account show \
+  --name "pwstrgrrd4320" \
+  --resource-group "rrd" \
+  --query id -o tsv
+
+
+
+
+
+//
+
+  az role assignment create \
+  --assignee "8b59c10b-ef59-48d2-b0c7-445920b7472b" \
+  --role "Storage Blob Data Contributor" \
+  --scope "$(az storage account show --name pwstrgrrd127e --resource-group rrd --query id -o tsv)"
+
+
+//with private azure accont - so I have enough preveleges
+ az ad sp create-for-rbac \
+  --name "git-playwright" \
+  --role Contributor \
+  --scopes "/subscriptions/6e9e45c8-e2fb-44f3-b8bf-f74720744cec/resourceGroups/rrd" \
+  --json-auth
