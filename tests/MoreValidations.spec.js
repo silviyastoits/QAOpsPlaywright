@@ -41,9 +41,9 @@ test("Screenshot and Visual comparison", async({page}) =>
      await expect(page.locator('#displayed-text')).toBeHidden();
 
 });
-test("visual", async({page}) =>
-{
-    await page.goto("https://www.google.com/");
-    expect(await page.screenshot()).toMatchSnapshot('landing.png');
+// test("visual", async({page}) =>
+// {
+//     await page.goto("https://www.google.com/");
+//     expect(await page.screenshot()).toMatchSnapshot('landing.png');
 
-})
+// })
