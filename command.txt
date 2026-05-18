@@ -8,7 +8,7 @@ az storage account show \
 
 
 
-//
+//Hier microsoft Entra Id in Azure search -> Users -> Sit Sto -> Id
 
   az role assignment create \
   --assignee "8b59c10b-ef59-48d2-b0c7-445920b7472b" \
@@ -18,7 +18,13 @@ az storage account show \
 
 //with private azure accont - so I have enough preveleges
  az ad sp create-for-rbac \
-  --name "git-playwright" \
+  --name "github-playwright" \
   --role Contributor \
-  --scopes "/subscriptions/6e9e45c8-e2fb-44f3-b8bf-f74720744cec/resourceGroups/rrd" \
+  --scopes "/subscriptions/6162a59c-4e11-4856-812d-7f11151f7ebb/resourceGroups/rrd" \
   --json-auth
+
+//Hier die client-Id aus dem SECRET kopieren
+az role assignment create \
+  --assignee "93c1f9c4-094c-4efb-a704-cfa9f8ad3171" \
+  --role "Storage Blob Data Contributor" \
+  --scope "$(az storage account show --name pwstrgrrd127e --resource-group rrd --query id -o tsv)"
