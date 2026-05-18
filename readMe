@@ -100,3 +100,96 @@ test.describe.configure({mode:'parallel'}); // this should run all tests from th
 
 In the command promt you have to run this command for example:
 npm run webTest
+
+
+
+GIT Commands:
+1. Commit into the main branch:
+//to see if a file is changed
+git status
+
+//Output - one file is modified
+On branch main
+Your branch is up to date with 'origin/main'.
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   tests/Calendar.spec.js
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+//add that modified file into repository  and commit with a message
+silviya.stoitseva@HYQKVM9G3Y PlaywrightAutomation % git add tests/Calendar.spec.js
+silviya.stoitseva@HYQKVM9G3Y PlaywrightAutomation % git commit -m "massage"
+
+//OUTPUT:
+[main 9815662] massage
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+ //PUSH and the tests will run:
+silviya.stoitseva@HYQKVM9G3Y PlaywrightAutomation % git push origin main
+
+//OUTPUT
+Enumerating objects: 7, done.
+Counting objects: 100% (7/7), done.
+Delta compression using up to 11 threads
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (4/4), 370 bytes | 370.00 KiB/s, done.
+Total 4 (delta 3), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (3/3), completed with 3 local objects.
+To https://github.com/silviyastoits/QAOpsPlaywright.git
+   8a49a25..9815662  main -> main
+
+2. Make a new branch for new changes and merge into main repository
+
+//checkout main:
+silviya.stoitseva@HYQKVM9G3Y PlaywrightAutomation % git checkout main
+M       readMe
+Already on 'main'
+Your branch is up to date with 'origin/main'.
+
+//create new branch
+ git checkout -b new_branch
+
+ //OUTPUT:
+ Switched to a new branch 'new_branch'
+
+ //make some changes in code...
+ //call git status to see if something changed:
+ git add tests/Calendar.spec.js
+
+ // commit with message
+ git commit -m "new branch modified"
+
+ //OUTPUT
+ [new_branch a59aebc] new branch modified
+ 2 files changed, 57 insertions(+), 2 deletions(-)
+
+ //then push into origin - the new branch
+ git push origin new_branch
+
+ //OUTPUT:
+ Enumerating objects: 9, done.
+Counting objects: 100% (9/9), done.
+Delta compression using up to 11 threads
+Compressing objects: 100% (5/5), done.
+Writing objects: 100% (5/5), 1.20 KiB | 1.20 MiB/s, done.
+Total 5 (delta 4), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (4/4), completed with 4 local objects.
+remote: 
+remote: Create a pull request for 'new_branch' on GitHub by visiting:
+remote:      https://github.com/silviyastoits/QAOpsPlaywright/pull/new/new_branch
+remote: 
+To https://github.com/silviyastoits/QAOpsPlaywright.git
+ * [new branch]      new_branch -> new_branch
+
+Go to Github and select Pull requests on the menu-tabs
+Then click button "Create new pull request
+Now select on the right side dropdown "new_branch"
+   It should be shown: base:main <- new_branch
+Click Create pull request green button
+
+The tests are red but the code is merged. If you do not want to merge code without passing the tests,
+you must create a set of rules in Github so you cannot merge code with broken tests into main (see 127 and 128 lessons from rahulshettyacademy)
+
+
+

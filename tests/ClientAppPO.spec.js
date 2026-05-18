@@ -18,8 +18,8 @@ for(const data of dataset)
       await dashboardPage.navigateToCart();
 
       const cartPage = poManager.getCartPage();
-      await cartPage.verifyCartPageIsOpen(data.productName);
-      await cartPage.checkOut();
+      await cartPage.VerifyProductIsDisplayed(data.productName);
+      await cartPage.Checkout();
 
       const ordersReviewPage = poManager.getOrdersReviewPage();
       await ordersReviewPage.searchCountryAndSelect("swi"," Switzerland")

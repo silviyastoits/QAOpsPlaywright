@@ -8,7 +8,7 @@ test('@Security test request intercept', async({page}) =>
    const userPassword =  page.locator('#userPassword');
    const userEmail =  page.locator('#userEmail');
    await userEmail.fill("silviyastoitseva@gmail.com");
-   await userPassword.fill("Iamking@00");
+   await userPassword.fill("Iamking!00");
    await page.locator("[value = 'Login']").click();
    await page.locator(".card-body b").first().waitFor();
    await page.locator("button[routerlink*='myorders']").click();
