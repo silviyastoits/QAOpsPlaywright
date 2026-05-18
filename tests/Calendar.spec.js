@@ -16,7 +16,7 @@ test("Calendar validations", async ({page})=>
     await page.locator(".react-calendar__tile").nth(monthNumber-1).click();
     await page.locator("//abbr[text()='"+date+"']").click();
     //  await page.locator("//abbr[text()='"+date+"']").click();
-
+   //small change 
     const inputs =  page.locator('.react-date-picker__inputGroup__input');
 
     // erst warten, bis die Werte wirklich gesetzt sind
