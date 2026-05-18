@@ -100,3 +100,58 @@ test.describe.configure({mode:'parallel'}); // this should run all tests from th
 
 In the command promt you have to run this command for example:
 npm run webTest
+
+
+
+GIT Commands:
+1. Commit into the main branch:
+//to see if a file is changed
+git status
+
+//Output - one file is modified
+On branch main
+Your branch is up to date with 'origin/main'.
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   tests/Calendar.spec.js
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+//add that modified file into repository  and commit with a message
+silviya.stoitseva@HYQKVM9G3Y PlaywrightAutomation % git add tests/Calendar.spec.js
+silviya.stoitseva@HYQKVM9G3Y PlaywrightAutomation % git commit -m "massage"
+
+//OUTPUT:
+[main 9815662] massage
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+ //PUSH and the tests will run:
+silviya.stoitseva@HYQKVM9G3Y PlaywrightAutomation % git push origin main
+
+//OUTPUT
+Enumerating objects: 7, done.
+Counting objects: 100% (7/7), done.
+Delta compression using up to 11 threads
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (4/4), 370 bytes | 370.00 KiB/s, done.
+Total 4 (delta 3), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (3/3), completed with 3 local objects.
+To https://github.com/silviyastoits/QAOpsPlaywright.git
+   8a49a25..9815662  main -> main
+
+2. Make a new branch for new changes and merge into main repository
+
+//checkout main:
+silviya.stoitseva@HYQKVM9G3Y PlaywrightAutomation % git checkout main
+M       readMe
+Already on 'main'
+Your branch is up to date with 'origin/main'.
+
+//create new branch
+ git checkout -b new_branch
+
+ //OUTPUT:
+ Switched to a new branch 'new_branch'
+
+
+
