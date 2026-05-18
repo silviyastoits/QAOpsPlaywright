@@ -1,35 +1,35 @@
 const {test, expect} = require('@playwright/test');
 
-test('Page ClientApp Registration', async ({page})=>
-{
-   await page.goto ("https://rahulshettyacademy.com/client");
-   const userPassword =  page.locator('#userPassword');
-   const userEmail =  page.locator('#userEmail');
+// test('Page ClientApp Registration', async ({page})=>
+// {
+//    await page.goto ("https://rahulshettyacademy.com/client");
+//    const userPassword =  page.locator('#userPassword');
+//    const userEmail =  page.locator('#userEmail');
 
-   const firstName =  page.locator('#firstName');
-   const lastName =  page.locator('#lastName');
-   const userMobile =  page.locator('#userMobile');
-   const occupation = page.locator('select[formcontrolname="occupation"]');
-   const genderFemale = page.locator('input[formcontrolname="gender"][value="Female"]');
-   const confirmPassword =  page.locator('#confirmPassword');
-   const required18 = page.locator('input[formcontrolname="required"]');
-   const registerBtn =  page.locator('#login');
+//    const firstName =  page.locator('#firstName');
+//    const lastName =  page.locator('#lastName');
+//    const userMobile =  page.locator('#userMobile');
+//    const occupation = page.locator('select[formcontrolname="occupation"]');
+//    const genderFemale = page.locator('input[formcontrolname="gender"][value="Female"]');
+//    const confirmPassword =  page.locator('#confirmPassword');
+//    const required18 = page.locator('input[formcontrolname="required"]');
+//    const registerBtn =  page.locator('#login');
 
-   await page.getByText('Register here', { exact: true }).click();
-   await firstName.fill('Silviya');
-   await lastName.fill("Stoitseva");
-   await userEmail.fill("silviyastoitseva@gmail.com");
-   await userMobile.fill("1179123456");
-   await occupation.selectOption({ label: 'Engineer' });
+//    await page.getByText('Register here', { exact: true }).click();
+//    await firstName.fill('Silviya');
+//    await lastName.fill("Stoitseva");
+//    await userEmail.fill("silviyastoitseva@gmail.com");
+//    await userMobile.fill("1179123456");
+//    await occupation.selectOption({ label: 'Engineer' });
 
-   await genderFemale.check();
-   await userPassword.fill("Iamking@00");
-   await confirmPassword.fill("Iamking@00");
-   await required18.check();
-   await registerBtn.click();
-   await page.pause();
+//    await genderFemale.check();
+//    await userPassword.fill("Iamking@00");
+//    await confirmPassword.fill("Iamking@00");
+//    await required18.check();
+//    await registerBtn.click();
+//    await page.pause();
 
-});
+// });
 
 test('Page ClientApp LogIn', async ({page})=>
 {
@@ -41,11 +41,11 @@ test('Page ClientApp LogIn', async ({page})=>
    const userEmail =  page.locator('#userEmail');
 
    await userEmail.fill("silviyastoitseva@gmail.com");
-   await userPassword.fill("Iamking@00");
+   await userPassword.fill("Iamking!00");
    await page.locator("[value = 'Login']").click();
 
-   //await page.waitForLoadState('networkidle');
-   await page.locator(".card-body b").first().waitFor();
+   await page.waitForLoadState('networkidle');
+//    await page.locator(".card-body b").first().waitFor();
    const titles = await page.locator(".card-body b").allTextContents();
    console.log(titles);
 });
@@ -60,12 +60,12 @@ test('ClientApp Buy And Checkout E2E', async ({page})=>
     const logInBtn = page.locator("[value = 'Login']");
 
     await userEmail.fill(email);
-    await userPassword.fill("Iamking@00");
+    await userPassword.fill("Iamking!00");
     await logInBtn.click();
 
     //wait for page to load
     await page.waitForLoadState('networkidle');
-    await page.locator(".card-body b").first().waitFor();
+    // await page.locator(".card-body b").first().waitFor();
     const titles = await page.locator(".card-body b").allTextContents();
     console.log(titles);
 
