@@ -153,5 +153,43 @@ Your branch is up to date with 'origin/main'.
  //OUTPUT:
  Switched to a new branch 'new_branch'
 
+ //make some changes in code...
+ //call git status to see if something changed:
+ git add tests/Calendar.spec.js
+
+ // commit with message
+ git commit -m "new branch modified"
+
+ //OUTPUT
+ [new_branch a59aebc] new branch modified
+ 2 files changed, 57 insertions(+), 2 deletions(-)
+
+ //then push into origin - the new branch
+ git push origin new_branch
+
+ //OUTPUT:
+ Enumerating objects: 9, done.
+Counting objects: 100% (9/9), done.
+Delta compression using up to 11 threads
+Compressing objects: 100% (5/5), done.
+Writing objects: 100% (5/5), 1.20 KiB | 1.20 MiB/s, done.
+Total 5 (delta 4), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (4/4), completed with 4 local objects.
+remote: 
+remote: Create a pull request for 'new_branch' on GitHub by visiting:
+remote:      https://github.com/silviyastoits/QAOpsPlaywright/pull/new/new_branch
+remote: 
+To https://github.com/silviyastoits/QAOpsPlaywright.git
+ * [new branch]      new_branch -> new_branch
+
+Go to Github and select Pull requests on the menu-tabs
+Then click button "Create new pull request
+Now select on the right side dropdown "new_branch"
+   It should be shown: base:main <- new_branch
+Click Create pull request green button
+
+The tests are red but the code is merged. If you do not want to merge code without passing the tests,
+you must create a set of rules in Github so you cannot merge code with broken tests into main (see 127 and 128 lessons from rahulshettyacademy)
+
 
 
